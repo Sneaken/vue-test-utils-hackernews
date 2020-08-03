@@ -1,6 +1,6 @@
-import TestComponent from "@/components/TestComponent";
+import TestComponent from "@/components/chapter-3/TestComponent";
 import { shallowMount } from "@vue/test-utils";
-import Child from "@/components/Child";
+import Child from "@/components/chapter-3/Child";
 
 describe("test TestComponent", () => {
   test("test child props", () => {
