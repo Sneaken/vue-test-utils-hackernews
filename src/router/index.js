@@ -5,6 +5,10 @@ Vue.use(VueRouter);
 
 const routes = [
   {
+    path: "/",
+    redirect: "/item-list"
+  },
+  {
     path: "/item-list",
     name: "ItemList",
     component: () =>
