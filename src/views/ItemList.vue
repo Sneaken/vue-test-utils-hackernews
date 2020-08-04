@@ -8,16 +8,15 @@
 
 <script>
 import Item from "@/components/Item.vue";
-import { fetchListData } from "@/api/api";
 
 export default {
   components: {
     Item
   },
-  data() {
-    return {
-      displayItems: []
-    };
+  computed: {
+    displayItems() {
+      return this.$store.getters.displayItems;
+    }
   },
   beforeMount() {
     this.loadItems();
@@ -25,12 +24,16 @@ export default {
   methods: {
     loadItems() {
       this.$bar.start();
-      fetchListData("top")
-        .then(items => {
-          this.displayItems = items;
+      this.$store
+        .dispatch("fetchListData", {
+          type: "top"
+        })
+        .then(() => {
           this.$bar.finish();
         })
-        .catch(() => this.$bar.fail());
+        .catch(() => {
+          this.$bar.fail();
+        });
     }
   }
 };
