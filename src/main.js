@@ -8,12 +8,11 @@ import ProgressBar from "@/components/ProgressBar";
 Vue.config.productionTip = false;
 
 const bar = new Vue(ProgressBar).$mount();
-// Object.defineProperty(Vue, "$bar", {
-//   get() {
-//     return bar;
-//   }
-// });
-Vue.prototype.$bar = bar;
+Object.defineProperty(Vue.prototype, "$bar", {
+  get() {
+    return bar;
+  }
+});
 document.body.appendChild(bar.$el);
 
 new Vue({
