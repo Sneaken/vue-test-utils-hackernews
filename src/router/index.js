@@ -1,23 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-
+import routerConfig from "@/router/router.config";
 Vue.use(VueRouter);
 
-const routes = [
-  {
-    path: "/",
-    redirect: "/item-list"
-  },
-  {
-    path: "/item-list",
-    name: "ItemList",
-    component: () =>
-      import(/* webpackChunkName: "item-list" */ "@/views/ItemList")
-  }
-];
-
-const router = new VueRouter({
-  routes
-});
+const router = new VueRouter(routerConfig);
 
 export default router;

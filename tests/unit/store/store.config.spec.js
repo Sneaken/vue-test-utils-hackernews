@@ -1,14 +1,21 @@
 import Vuex from "vuex";
+import VueRouter from "vue-router";
 import { createLocalVue } from "@vue/test-utils";
 import cloneDeep from "lodash.clonedeep";
 import flushPromises from "flush-promises";
-import storeConfig from "@/store/store-config";
+import storeConfig from "@/store/store.config";
+import routerConfig from "@/router/router.config";
 import { fetchListData } from "@/api/api";
+import { sync } from "vuex-router-sync";
 
 jest.mock("@/api/api");
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
+localVue.use(VueRouter);
+const store = new Vuex.Store(storeConfig);
+const router = new VueRouter(routerConfig);
+sync(store, router);
 
 function createItems() {
   const arr = new Array(22);

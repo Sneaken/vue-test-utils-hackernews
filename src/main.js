@@ -4,6 +4,7 @@ import router from "./router";
 import store from "./store";
 
 import ProgressBar from "@/components/ProgressBar";
+import { sync } from "vuex-router-sync";
 
 Vue.config.productionTip = false;
 
@@ -14,6 +15,8 @@ Object.defineProperty(Vue.prototype, "$bar", {
   }
 });
 document.body.appendChild(bar.$el);
+
+sync(store, router);
 
 new Vue({
   router,

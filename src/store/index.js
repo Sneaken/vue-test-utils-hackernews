@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
-import storeConfig from "@/store/store-config";
+import storeConfig from "@/store/store.config";
 
 Vue.use(Vuex);
 
